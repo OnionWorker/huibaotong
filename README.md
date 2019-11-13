@@ -23,9 +23,9 @@
   
   调用说明
   ```Go
-  HuiBaoSDK,Err := huibaotong.NewHuiBao //(API请求地址常量,参与签名的KEY)
+  HuiBaoSDK,Err := huibaotong.NewHuiBao(API请求地址常量,参与签名的KEY)
   ......
-  Result := HuiBaoSDK.SetEntity(实体struck).Excute //(返回类型常量,可选参数URL)  
+  Result := HuiBaoSDK.SetEntity(实体struck).Excute(返回类型常量,可选参数URL)  
   ```
   
   可选参数URL说明
