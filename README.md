@@ -1,6 +1,7 @@
 #汇宝通API封装包
 
-    由于我司这些日子需要支付功能，但又不想直接接入WX、AL。所以使用了汇宝通的API来完成公司项目的业务。总体来说对接中的过程还是让人觉得很混乱的，还是希望官方对文档、以及接口传参、返回值都优化处理下，尽量多一点共性。
+		由于我司这些日子需要支付功能，但又不想直接接入WX、AL。所以使用了汇宝通的API来完成公司项目的业务。总体来说对接中的过程还是让人觉得很混乱的，
+		还是希望官方对文档、以及接口传参、返回值都优化处理下，尽量多一点共性。
 
 包说名（目前包含：微信H5、支付宝H5、PC扫码支付）
 
@@ -15,9 +16,9 @@
   
   返回类型常量
   
-    * XMLRETURN  用于解析XML的返回值（POST content-type application/x-www-form-urlencoded）
-	* URLRETURN  当接口直接返回URL地址时必须使用此类型 (直接组装参数返回URL，无需要发起请求）
-	* JSONRETURN  当接口返回JSON时 （POST content-type application/json）
+  * XMLRETURN  用于解析XML的返回值（POST content-type application/x-www-form-urlencoded）
+  * URLRETURN  当接口直接返回URL地址时必须使用此类型 (直接组装参数返回URL，无需要发起请求）
+  * JSONRETURN  当接口返回JSON时 （POST content-type application/json）
   
   调用说明
   ```Go
