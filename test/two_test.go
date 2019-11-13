@@ -19,7 +19,7 @@ import (
 	测试SDK入口类传参使用方法
  */
 func TestHuiBaoSdk(t *testing.T){
-	HuiBaoSDK,Err := huibaotong.NewHuiBao(conf.WXH5PAY,"94C49D3629584B918A06BE9F")
+	HuiBaoSDK,Err := huibaotong.NewHuiBao(conf.H5PAY,"94C49D3629584B918A06BE9F")
 	if Err != nil{
 		fmt.Print(Err)
 	}
@@ -49,7 +49,7 @@ func TestHuiBaoSdk(t *testing.T){
 }
 
 func TestHuiBaoSdkTwo(t *testing.T){
-	HuiBaoSDK,Err := huibaotong.NewHuiBao(conf.WXH5PAY,"94C49D3629584B918A06BE9F")
+	HuiBaoSDK,Err := huibaotong.NewHuiBao(conf.H5PAY,"94C49D3629584B918A06BE9F")
 	if Err != nil{
 		fmt.Print(Err)
 	}
