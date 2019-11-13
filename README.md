@@ -36,6 +36,7 @@
  扩展说明
     
     如果想调用汇付宝其他API，请在构造entity时 实现 entity.Entity 中的 GetSign()[]string 方法
+    返回的数组为签名的字段的顺序，需要手动设置好顺序......
     如需定义常量，请前往 conf/Config.go
     
 （如有问题请ISSUES看到就会回复，如想吐槽---- thank you 现在还不用）
