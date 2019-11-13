@@ -2,9 +2,9 @@ package huibaotong
 
 import (
 	"errors"
-	"huibaotong/conf"
-	"huibaotong/entity"
-	"huibaotong/lib"
+	"github.com/OnionWorker/huibaotong/conf"
+	"github.com/OnionWorker/huibaotong/entity"
+	"github.com/OnionWorker/huibaotong/lib"
 )
 
 /*****************************************************************************************************

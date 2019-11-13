@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"reflect"
 	"testing"
-	"wwwroot/upschool/utils/huibaotong/entity"
+	"github.com/OnionWorker/huibaotong/entity"
 )
 
 func TestEntiyOne(t *testing.T){

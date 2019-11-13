@@ -10,9 +10,9 @@ import (
 	"net/url"
 	"strings"
 	"testing"
-	"huibaotong"
-	"huibaotong/conf"
-	"huibaotong/entity"
+	"github.com/OnionWorker/huibaotong"
+	"github.com/OnionWorker/huibaotong/conf"
+	"github.com/OnionWorker/huibaotong/entity"
 )
 
 /**

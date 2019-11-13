@@ -2,8 +2,8 @@ package lib
 
 import (
 	"fmt"
-	"huibaotong/conf"
-	"huibaotong/entity"
+	"github.com/OnionWorker/huibaotong/conf"
+	"github.com/OnionWorker/huibaotong/entity"
 	"reflect"
 	"strings"
 )
