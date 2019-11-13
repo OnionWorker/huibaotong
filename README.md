@@ -9,9 +9,9 @@
 常量说明
   API请求地址常量
   
-  CUSTOM   自定义API URL
-	H5PAY    H5手机支付 API URL （微信支付宝共用，具体文档：http://dev.heepay.com/index.php?s=/31&page_id=251） 
-	PCQRPAY  pc扫码支付 文档 http://dev.heemoney.com/#/API?id=%e7%bb%9f%e4%b8%80%e4%b8%8b%e5%8d%95
+  * CUSTOM   自定义API URL
+   * 	H5PAY    H5手机支付 API URL （微信支付宝共用，具体文档：http://dev.heepay.com/index.php?s=/31&page_id=251） 
+	* PCQRPAY  pc扫码支付 文档 http://dev.heemoney.com/#/API?id=%e7%bb%9f%e4%b8%80%e4%b8%8b%e5%8d%95
   
   返回类型常量
   
