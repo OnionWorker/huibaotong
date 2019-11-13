@@ -10,20 +10,21 @@
   API请求地址常量
   
   * CUSTOM   自定义API URL
-   * 	H5PAY    H5手机支付 API URL （微信支付宝共用，具体文档：http://dev.heepay.com/index.php?s=/31&page_id=251） 
-	* PCQRPAY  pc扫码支付 文档 http://dev.heemoney.com/#/API?id=%e7%bb%9f%e4%b8%80%e4%b8%8b%e5%8d%95
+  * H5PAY    H5手机支付 API URL （微信支付宝共用，具体文档：http://dev.heepay.com/index.php?s=/31&page_id=251） 
+  * PCQRPAY  pc扫码支付 文档 http://dev.heemoney.com/#/API?id=%e7%bb%9f%e4%b8%80%e4%b8%8b%e5%8d%95
   
   返回类型常量
   
-  XMLRETURN  用于解析XML的返回值（POST content-type application/x-www-form-urlencoded）
-	URLRETURN  当接口直接返回URL地址时必须使用此类型 (直接组装参数返回URL，无需要发起请求）
-	JSONRETURN  当接口返回JSON时 （POST content-type application/json）
+    * XMLRETURN  用于解析XML的返回值（POST content-type application/x-www-form-urlencoded）
+	* URLRETURN  当接口直接返回URL地址时必须使用此类型 (直接组装参数返回URL，无需要发起请求）
+	* JSONRETURN  当接口返回JSON时 （POST content-type application/json）
   
   调用说明
-
-  HuiBaoSDK,Err := huibaotong.NewHuiBao(API请求地址常量,参与签名的KEY)
+  ```Go
+  HuiBaoSDK,Err := huibaotong.NewHuiBao //(API请求地址常量,参与签名的KEY)
   ......
-  Result := HuiBaoSDK.SetEntity(实体struck).Excute(返回类型常量,可选参数URL)  
+  Result := HuiBaoSDK.SetEntity(实体struck).Excute //(返回类型常量,可选参数URL)  
+  ```
   
   可选参数URL说明
      参数传递需要经过 huibaotong.Url(网址字符串) 包装
