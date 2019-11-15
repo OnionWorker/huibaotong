@@ -9,6 +9,7 @@ import (
 	"github.com/OnionWorker/huibaotong/conf"
 	"github.com/OnionWorker/huibaotong/entity"
 	"github.com/OnionWorker/huibaotong/lib"
+	"github.com/mahonia"
 	"github.com/thinkoner/openssl"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
@@ -210,15 +211,26 @@ func DesEncodes(src []byte,key []byte)([]byte,error){
         return result;
     }
 */
-func getHexString()
+func getHexString()string{
+	return ""
+}
+
 func Test3des3(t *testing.T){
 	var str string = `[{"auth_bank_card":"6217000130000751966","auth_id_card":"320926195511175276","auth_mobile":"13811111111","auth_name":"张三","bank_card_type":"1"}]`
 	strByt,_ :=UTF82GB2312([]byte(str))
 	key,_ :=UTF82GB2312([]byte("7E1682A2CDDD456D97F9EED0"))
 	desByte,err := DesEncodes(strByt,key)
-	desGbk,err := UTF82GB2312(desByte)
 	fmt.Println(err)
-	fmt.Println(hex.EncodeToString(desGbk))
+	fmt.Println(hex.EncodeToString(desByte))
+}
+
+func Test3des4(t *testing.T){
+	enc:=mahonia.NewEncoder("gbk")
+	var str string = enc.ConvertString(`[{"auth_bank_card":"6217000130000751966","auth_id_card":"320926195511175276","auth_mobile":"13811111111","auth_name":"张三","bank_card_type":"1"}]`)
+	key :=enc.ConvertString("7E1682A2CDDD456D97F9EED0")
+	desByte,err := DesEncodes([]byte(str),[]byte(key))
+	fmt.Println(err)
+	fmt.Println(hex.EncodeToString(desByte))
 }
 
 func Test3des2(t *testing.T){
