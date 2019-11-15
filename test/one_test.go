@@ -5,6 +5,7 @@ import (
 	"reflect"
 	"testing"
 	"github.com/OnionWorker/huibaotong/entity"
+	"time"
 )
 
 func TestEntiyOne(t *testing.T){
@@ -34,4 +35,16 @@ func TestGetEntityTag(t *testing.T){
 	}
 
 	t.Log(EntityOne)
+}
+
+func TestTimes(t *testing.T){
+	fmt.Println(time.Now().Format("20060102010500"))  //2019-07-31
+}
+
+func TestMoney(t *testing.T){
+	var money float64 = 100.20
+	var fen float64 = 100
+	ff := money*fen
+	var  aa int = int(ff)
+	fmt.Println(aa)
 }
