@@ -36,7 +36,9 @@ func (this *Request) Run(config *conf.Config,signDatas []string,entitys entity.E
 				break
 		}
 	}
+
 	this.signData = getSignStr(this.signDataAtr,this.signMap)
+	fmt.Println(this.signData)
 	this.postData["sign"] = encodeMD5(this.signData)
 	if rtype == conf.XMLRETURN{
 		resultString,Err := post(this.postUrl,getPostStr(this.postData))

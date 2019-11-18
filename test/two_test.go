@@ -117,9 +117,17 @@ func TestPcQrPay(t *testing.T){
 	t.Log(Result)
 }
 
+//json 解析测试
+func TestJson(t *testing.T){
+	var str string = `{\"out_trade_no\":\"256522225fgfg25SSaa\",\"auth_type\":\"2\",\"auth_detail_type\":\"3\",\"auth_data_info\":\"3ad5db688a251024697bbe93fc25d363272ad7ca6a04fbbfa15614a290653f8f9312e6225d33d76a9681eccaa5a70b2353d1950285d738f5a035ee6b881a01f9a02b8a9c4541dc42a5003fc7113b10770a8b4db65076653c8e67d58e6290cc5b7ff1920558d309491c91d038a50bbe23eef7dbc9aea56ac97facc4672171451421fbc30785eb14e8ed4232c40d50d3bcca29a8e8599de94e\"}`
+	var maps map[string]interface{}
+	err:=json.Unmarshal([]byte(str),&maps)
+	fmt.Println(err)
+	fmt.Println(maps)
+}
 //鉴权测试
 func TestAuth(t *testing.T){
-	HuiFuBaoSDK,Err := huibaotong.NewHuiBao(conf.AUTHSUB,"3175B8AE5E614912BD7AC5DA")
+	HuiFuBaoSDK,Err := huibaotong.NewHuiBao(conf.AUTHSUB,"2C5BA54B58654699853D7B9B")
 	if Err != nil{
 		fmt.Println(Err)
 		return
@@ -128,10 +136,10 @@ func TestAuth(t *testing.T){
 	AuthCommon := &entity.NewCommonEntity{
 		Version:"1.0",
 		Method:"heemoney.user.auth.submit",
-		AppId:"hyp191114119487000020660893D4FA2",
+		AppId:"hyp191115119487000020781A1355F84",
 		MchUid:"1194872122863",
 		Charset:"UTF-8",
-		Timestamp:"20191114181001",
+		Timestamp:"20191118110001",
 		SignType:"MD5",
 	}
 	//鉴权的私有业务参数
@@ -141,7 +149,7 @@ func TestAuth(t *testing.T){
 		AuthDetailType:"3",
 		//AuthDataInfo:"",
 	}
-	//组合银行卡四要素验证数据
+	//组合银行卡四要素验证数据[{"bank_card_type":"1","auth_bank_card":"6217000130000751966","auth_name":"张三"}]
 	var CardData map[string]string = make(map[string]string)
 	CardData["bank_card_type"] = "1"  //类型 1银行卡 2信用卡
 	CardData["auth_bank_card"] = "6217000130000751966" //卡号
@@ -153,15 +161,16 @@ func TestAuth(t *testing.T){
 	jsonByte,err := json.Marshal(CardArr)
 	fmt.Println(err)
 	fmt.Println(string(jsonByte))
-	//testss := lib.ThriDESEnCrypt(jsonByte,[]byte("7E1682A2CDDD456D97F9EED0"))
-	//fmt.Println(string(testss))
-	desString,err :=lib.DesEncode(jsonByte,[]byte("7E1682A2CDDD456D97F9EED0"))
-	//desString := hex.EncodeToString(testss)
+	enc:=mahonia.NewEncoder("gbk")
+	var str string = enc.ConvertString(string(jsonByte))
+	key :=enc.ConvertString("031EE29ABD2F4C609CD2A5CF")
+	desString,err :=lib.DesEncode([]byte(str),[]byte(key))
 	fmt.Println(err)
 	fmt.Println(desString)
 	AuthEntity.AuthDataInfo = desString
-	//AuthEntity.AuthDataInfo = `3ad5db688a251024697bbe93fc25d363272ad7ca6a04fbbfa15614a290653f8f9312e6225d33d76a9681eccaa5a70b2353d1950285d738f5a035ee6b881a01f9a02b8a9c4541dc42a5003fc7113b10770a8b4db65076653c8e67d58e6290cc5b7ff1920558d309491c91d038a50bbe237fa0cce16d479313f175243731b8a8f51ec621736c2f57aececf4a2c2f069f9582b6acdc0bb8e0d0`
 	bizContent,err := json.Marshal(AuthEntity)
+	fmt.Println("=================================")
+	fmt.Println(string(bizContent))
 	fmt.Println(err)
 	AuthCommon.BizContent = string(bizContent)
 	Result := HuiFuBaoSDK.SetEntity(AuthCommon).Excute(conf.JSONRETURN)

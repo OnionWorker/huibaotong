@@ -9,7 +9,7 @@ type NewCommonEntity struct {
 	Charset       string       `json:"charset"` //编码格式默认为UTF-8
 	SignType      string       `json:"sign_type"` //商户生成签名字符串所使用的签名算法类型
 	Timestamp     string       `json:"timestamp"` //发送请求的时间
-	BizContent    string       `json:"biz_content"` //鉴权参数集合,Json格式,长度不限,具体参数见如下业务参数
+	BizContent    interface{}       `json:"biz_content"` //鉴权参数集合,Json格式,长度不限,具体参数见如下业务参数
 	Sign          string       `json:"sign"` //鉴权参数集合,Json格式,长度不限,具体参数见如下业务参数
 }
 

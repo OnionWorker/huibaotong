@@ -41,7 +41,13 @@ func toString(elemnt interface{})string{
 	case string:
 		str = x
 	default:
-		str = fmt.Sprintf("%d", x)
+		if isStruct(reflect.TypeOf(x))|| isStructPtr(reflect.TypeOf(x)){
+			jsonByte,err := json.Marshal(x)
+			fmt.Println(err)
+			str = string(jsonByte)
+		}else{
+			str = fmt.Sprintf("%d", x)
+		}
 	}
 	return str
 }
@@ -131,7 +137,8 @@ func DesEncode(src []byte,key []byte)(string,error){
 	if Err != nil{
 		return "",Err
 	}
-	return hex.EncodeToString(Res),nil
+
+	return strings.ToUpper(hex.EncodeToString(Res)),nil
 	//return string(Res),nil
 }
 

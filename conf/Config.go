@@ -17,6 +17,7 @@ var HuiBaoApiMap map[HuiBaoType]string = map[HuiBaoType]string{
 	H5PAY:  "https://Pay.Heepay.com/DirectPay/applypay.aspx",  //微信H5支付接口
 	PCQRPAY:  "https://pay.heemoney.com/v1/ApplyPay",  //pc扫码支付接口
 	AUTHSUB:  "http://api.heemoney.com/v1/UserAuthSubmit",  //银行卡鉴权请求接口
+	//AUTHSUB:  "https://demo.api.heemoney.com",  //银行卡鉴权请求接口
 	AUTHQUERY:  "http://api.heemoney.com/v1/UserAuthQuery",  //银行卡鉴权结果查询接口
 }
 
