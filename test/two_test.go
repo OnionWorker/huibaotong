@@ -17,6 +17,7 @@ import (
 	"net/url"
 	"strings"
 	"testing"
+	"time"
 )
 
 /**
@@ -95,12 +96,12 @@ func TestPcQrPay(t *testing.T){
 		AppId:"hyp191112119487000020549C0C330C4",
 		MchUid:"1194872122863",
 		Charset:"UTF-8",
-		Timestamp:"20191115122001",
+		Timestamp:time.Now().Format("20060102150405"),
 		SignType:"MD5",
 	}
 	//业务参数
 	PayData := &entity.PcQrPayEntity{
-		OutTradeNo:"256522225fgfSCCS",
+		OutTradeNo:"pay_"+time.Now().Format("20060102150405"),
 		Subject:"测试商品",
 		TotalFee:100,
 		ChannelType:"ALI_QRCODE",
@@ -139,12 +140,12 @@ func TestAuth(t *testing.T){
 		AppId:"hyp191115119487000020781A1355F84",
 		MchUid:"1194872122863",
 		Charset:"UTF-8",
-		Timestamp:"20191118110001",
+		Timestamp:time.Now().Format("20060102150405"),
 		SignType:"MD5",
 	}
 	//鉴权的私有业务参数
 	AuthEntity := &entity.AuthEntity{
-		OutTradeNo:"256522225fgfg25SSaa",
+		OutTradeNo:"order_"+time.Now().Format("20060102150405"),
 		AuthType:"2",
 		AuthDetailType:"3",
 		//AuthDataInfo:"",
@@ -152,10 +153,10 @@ func TestAuth(t *testing.T){
 	//组合银行卡四要素验证数据[{"bank_card_type":"1","auth_bank_card":"6217000130000751966","auth_name":"张三"}]
 	var CardData map[string]string = make(map[string]string)
 	CardData["bank_card_type"] = "1"  //类型 1银行卡 2信用卡
-	CardData["auth_bank_card"] = "6217000130000751966" //卡号
-	CardData["auth_id_card"] = "320926195511175276" //身份证号
-	CardData["auth_name"] = "张三"  //卡主姓名
-	CardData["auth_mobile"] = "13811111111" //卡手机号码
+	CardData["auth_bank_card"] = "6214467873188581778" //卡号
+	CardData["auth_id_card"] = "23012419900709141X" //身份证号
+	CardData["auth_name"] = "张文强"  //卡主姓名
+	CardData["auth_mobile"] = "18569083866" //卡手机号码
 	var CardArr []map[string]string
 	CardArr = append(CardArr,CardData)
 	jsonByte,err := json.Marshal(CardArr)
